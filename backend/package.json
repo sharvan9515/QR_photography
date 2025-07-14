@@ -3,9 +3,17 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "jest"
   },
   "dependencies": {
-    "express": "latest"
+    "express": "latest",
+    "multer": "latest",
+    "@supabase/supabase-js": "latest",
+    "jsonwebtoken": "latest"
+  },
+  "devDependencies": {
+    "jest": "latest",
+    "supertest": "latest"
   }
 }

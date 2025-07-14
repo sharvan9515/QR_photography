@@ -1,30 +1,35 @@
 # QR Photography Monorepo
 
-This repository contains two projects:
+This monorepo contains the frontend (Next.js) and backend (Express.js) applications.
 
-- **frontend** – a basic Next.js application.
-- **backend** – a basic Express.js API server.
+## Install dependencies
 
-## Running the applications
-
-Each project has its own `package.json`. Install dependencies and start the servers using the provided scripts.
-
-### Frontend (Next.js)
+From the repository root run:
 
 ```bash
-cd frontend
-npm install
+npm run install-all
+```
+
+## Development
+
+Start both the backend and frontend concurrently:
+
+```bash
 npm run dev
 ```
 
-The app will start in development mode (default port 3000).
+Frontend runs on port `3000` and the API on port `3001`.
 
-### Backend (Express.js)
+## Deployment
 
-```bash
-cd backend
-npm install
-npm start
+- **Frontend**: deploy the `frontend` directory to Vercel.
+- **Backend**: deploy the `backend` directory to Render.
+- **Supabase**: used for database and storage. Add the following environment variables in both environments:
+
+```
+SUPABASE_URL
+SUPABASE_SERVICE_KEY
+SUPABASE_ANON_KEY
 ```
 
-The API server will start on port 3001 by default.
+Vercel and Render should expose these variables at build and runtime to allow the apps to authenticate with Supabase securely.
