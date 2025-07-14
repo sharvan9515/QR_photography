@@ -74,8 +74,10 @@ app.get('/', (req, res) => {
   res.send('Hello from Express');
 });
 
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
-});
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Server listening on port ${PORT}`);
+  });
+}
 
 module.exports = app; // for testing

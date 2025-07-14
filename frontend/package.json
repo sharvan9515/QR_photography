@@ -9,22 +9,25 @@
     "test": "jest"
   },
   "dependencies": {
+    "@supabase/auth-helpers-react": "latest",
+    "@supabase/supabase-js": "latest",
     "@tailwindcss/postcss": "^4.1.11",
     "autoprefixer": "^10.4.21",
+    "axios": "latest",
     "next": "latest",
     "postcss": "^8.5.6",
     "react": "latest",
     "react-dom": "latest",
-    "tailwindcss": "^4.1.11",
-    "@supabase/supabase-js": "latest",
-    "@supabase/auth-helpers-react": "latest",
     "react-qr-code": "latest",
-    "axios": "latest"
+    "tailwindcss": "^4.1.11"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.28.0",
+    "@babel/preset-react": "^7.27.1",
+    "@testing-library/jest-dom": "latest",
     "@testing-library/react": "latest",
     "jest": "latest",
-    "@testing-library/jest-dom": "latest",
+    "jest-environment-jsdom": "^30.0.4",
     "playwright": "latest"
   }
 }
