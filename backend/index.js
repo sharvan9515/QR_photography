@@ -3,6 +3,8 @@ const multer = require('multer');
 const { createClient } = require('@supabase/supabase-js');
 const jwt = require('jsonwebtoken');
 
+const JWT_SECRET = process.env.SUPABASE_JWT_SECRET;
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 const upload = multer({ storage: multer.memoryStorage() });
@@ -16,7 +18,7 @@ function authMiddleware(role) {
     const token = req.headers.authorization?.split(' ')[1];
     if (!token) return res.status(401).json({ error: 'missing token' });
     try {
-      const payload = jwt.decode(token);
+      const payload = jwt.verify(token, JWT_SECRET);
       if (role && payload.role !== role) {
         return res.status(403).json({ error: 'forbidden' });
       }
