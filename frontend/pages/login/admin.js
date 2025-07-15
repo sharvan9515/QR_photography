@@ -9,8 +9,18 @@ export default function AdminLogin() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
-    if (!error) router.push('/upload');
+    const res = await fetch('/api/login/admin', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password }),
+    });
+    if (res.ok) {
+      const data = await res.json();
+      if (data.session) {
+        await supabase.auth.setSession(data.session);
+        router.push('/upload');
+      }
+    }
   };
 
   return (

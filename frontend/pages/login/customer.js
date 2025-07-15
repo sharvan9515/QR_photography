@@ -9,8 +9,18 @@ export default function CustomerLogin() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
-    if (!error) router.push('/gallery');
+    const res = await fetch('/api/login/customer', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password }),
+    });
+    if (res.ok) {
+      const data = await res.json();
+      if (data.session) {
+        await supabase.auth.setSession(data.session);
+        router.push('/gallery');
+      }
+    }
   };
 
   return (
